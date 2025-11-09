@@ -149,9 +149,24 @@ body {
         font-size: 1.5em;
         margin-bottom: 0.5em;
         color: #fff;
+        &:hover {
+            cursor: pointer;
+            &::after {
+                content: '#';
+                color: #a0d0ff;
+                padding-left: 0.25em;
+            }
+        }
     }
 
     p {
         margin-bottom: 1em;
     }
+}
+
+body[data-active-topic] .topic:target {
+    background-color: transparent;
+    border-radius: 0;
+    border-bottom-color: #444;
+    box-shadow: none;
 }
