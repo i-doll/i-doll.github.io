@@ -1,4 +1,14 @@
 
+:root {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        scroll-behavior: auto;
+    }
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #2e2e2e;
@@ -10,7 +20,7 @@ body {
 .cards {
     display: flex;
     flex-direction: wrap;   
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 1em;
     justify-content: center;
     align-items: center;
