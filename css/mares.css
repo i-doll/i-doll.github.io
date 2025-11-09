@@ -1,6 +1,7 @@
 
 :root {
     scroll-behavior: smooth;
+    scroll-padding-top: clamp(3.5rem, 8vh, 5.5rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -88,7 +89,6 @@ body {
 
 .index {
     margin: 2em 0;
-
     h2 {
         font-size: 1.5em;
         margin-bottom: 0.5em;
@@ -116,6 +116,14 @@ body {
                     border-bottom-color: #a0d0ff;
                 }
             }
+
+            a.is-active {
+                color: #fff;
+                border-bottom-color: #a0d0ff;
+                background-color: rgba(160, 208, 255, 0.12);
+                border-radius: 0.25em;
+                padding-inline: 0.25em;
+            }
         }
     }
 }
@@ -123,9 +131,18 @@ body {
 .topic {
     margin-top: 2em;
     padding: 1em;
+    scroll-margin-top: clamp(3.5rem, 8vh, 5.5rem);
 
     &:not(:last-child) {
         border-bottom: 1px solid #444;
+    }
+
+    &.is-active,
+    &:target {
+        background-color: rgba(160, 208, 255, 0.08);
+        border-radius: 0.5em;
+        border-bottom-color: transparent;
+        box-shadow: 0 0 0 1px rgba(160, 208, 255, 0.4);
     }
 
     h2 {
