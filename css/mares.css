@@ -1,0 +1,130 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2e2e2e;
+    color: #fff;
+    margin: 0;
+    padding: 1em;
+}
+
+.cards {
+    display: flex;
+    flex-direction: wrap;   
+    flex-wrap: nowrap;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.horse-head-sharp {
+    --icon: url('../img/horse-head-sharp.svg');
+}
+
+.horse-shoe-sharp {
+    --icon: url('../img/horse-shoe-sharp.svg');
+}
+
+.hat-cowboy-side-sharp {
+    --icon: url('../img/hat-cowboy-side-sharp.svg');
+}
+
+
+.card {
+
+    background-color: #1e1e1e;
+    border-radius: 0.5em;
+    padding: 1em;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s ease;
+    &:hover {
+        box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    h2 {
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 1.5em;
+        margin: 0;
+        text-align: left;
+
+        li::before {
+            content: '';
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            margin-right: 0.5em;
+            background-image: var(--icon);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: invert(1) grayscale(100%);
+        }
+    }
+}
+
+.index {
+    margin: 2em 0;
+
+    h2 {
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+        color: #fff;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin-bottom: 0.25em;
+
+            a {
+                color: #a0d0ff;
+                text-decoration: none;
+                padding: 0.25em 0;
+                display: inline-block;
+                border-bottom: 1px solid transparent;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    color: #fff;
+                    border-bottom-color: #a0d0ff;
+                }
+            }
+        }
+    }
+}
+
+.topic {
+    margin-top: 2em;
+    padding: 1em;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid #444;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+        color: #fff;
+    }
+
+    p {
+        margin-bottom: 1em;
+    }
+}
