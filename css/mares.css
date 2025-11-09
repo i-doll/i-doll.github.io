@@ -164,7 +164,7 @@ body {
     }
 }
 
-body[data-active-topic] .topic:target {
+body[data-active-topic] .topic:target:not(.is-active) {
     background-color: transparent;
     border-radius: 0;
     border-bottom-color: #444;
