@@ -1,0 +1,10 @@
+{
+	"scripts": {
+		"dev": "vite",
+		"lint": "oxlint"
+	},
+	"devDependencies": {
+		"vite": "^7.2.2",
+		"oxlint": "^1.26.0"
+	}
+}
