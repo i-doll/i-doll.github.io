@@ -20,6 +20,12 @@ body {
     min-height: 100vh;
 }
 
+.highlight {
+    color: #a0d0ff;
+    font-weight: bold;
+    user-select: all;
+}
+
 .layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(240px, 280px);
@@ -61,7 +67,6 @@ body {
 .hat-cowboy-side-sharp {
     --icon: url('../img/hat-cowboy-side-sharp.svg');
 }
-
 
 .card {
 
