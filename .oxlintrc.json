@@ -1,0 +1,16 @@
+{
+    "rules": {
+        "no-unused-vars": "error",
+        "no-undef": "error",
+        "no-unused-expressions": "error",
+        "no-unused-labels": "error",
+        "no-unused-imports": "error",
+        "no-alert": "error",
+        "oxc/approx-constant": "warn",
+        "no-plusplus": "off"
+    },
+    "categories": {
+        "correctness": "error",
+        "suspicious": "warn"
+    }
+}

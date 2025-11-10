@@ -1,6 +1,6 @@
-const topics = Array.from(document.querySelectorAll('.topic[id]'));
+const topics = Array.from(globalThis.document.querySelectorAll('.topic[id]'));
 const topicsById = new Map(topics.map((topic) => [topic.id, topic]));
-const navLinks = Array.from(document.querySelectorAll('.index a[href^="#"]'));
+const navLinks = Array.from(globalThis.document.querySelectorAll('.index a[href^="#"]'));
 const linksById = new Map();
 let currentActiveId = null;
 let manualOverrideId = null;
@@ -23,9 +23,9 @@ const setActive = (activeId) => {
     currentActiveId = normalizedId;
 
     if (normalizedId) {
-        document.body.dataset.activeTopic = normalizedId;
+        globalThis.document.body.dataset.activeTopic = normalizedId;
     } else {
-        delete document.body.dataset.activeTopic;
+        delete globalThis.document.body.dataset.activeTopic;
     }
 
     topicsById.forEach((topic, id) => {
@@ -45,7 +45,7 @@ const setActive = (activeId) => {
 const clearManualOverride = () => {
     manualOverrideId = null;
     if (manualOverrideClearTimer) {
-        window.clearTimeout(manualOverrideClearTimer);
+        globalThis.clearTimeout(manualOverrideClearTimer);
         manualOverrideClearTimer = null;
     }
 };
@@ -53,15 +53,15 @@ const clearManualOverride = () => {
 const setManualOverride = (topicId) => {
     manualOverrideId = topicId;
     if (manualOverrideClearTimer) {
-        window.clearTimeout(manualOverrideClearTimer);
+        globalThis.clearTimeout(manualOverrideClearTimer);
     }
-    manualOverrideClearTimer = window.setTimeout(() => {
+    manualOverrideClearTimer = globalThis.setTimeout(() => {
         clearManualOverride();
     }, 1500);
 };
 
 const syncFromLocation = () => {
-    const currentId = normalizeHash(window.location.hash);
+    const currentId = normalizeHash(globalThis.location.hash);
     if (currentId && topicsById.has(currentId)) {
         setManualOverride(currentId);
         setActive(currentId);
@@ -85,19 +85,19 @@ if (navLinks.length) {
         });
     });
 
-    window.addEventListener('hashchange', syncFromLocation);
+    globalThis.addEventListener('hashchange', syncFromLocation);
     syncFromLocation();
 }
 
 const buildTopicUrl = (topicId) => {
-    const url = new URL(window.location.href);
+    const url = new globalThis.URL(globalThis.location.href);
     url.hash = topicId;
     return url.toString();
 };
 
 const copyTopicLink = async (topicId) => {
     const topicUrl = buildTopicUrl(topicId);
-    await navigator.clipboard.writeText(topicUrl);
+    await globalThis.navigator.clipboard.writeText(topicUrl);
 };
 
 topics.forEach((topic) => {
@@ -111,12 +111,12 @@ topics.forEach((topic) => {
         try {
             await copyTopicLink(topicId);
         } catch (error) {
-            console.error(`Failed to copy link for topic "${topicId}"`, error);
+            globalThis.console.error(`Failed to copy link for topic "${topicId}"`, error);
             return;
         }
 
-        if (window.location.hash !== `#${topicId}`) {
-            history.replaceState(null, '', `#${topicId}`);
+        if (globalThis?.location?.hash !== `#${topicId}`) {
+            globalThis.history.replaceState(null, '', `#${topicId}`);
         }
 
         setManualOverride(topicId);
@@ -125,7 +125,7 @@ topics.forEach((topic) => {
 });
 
 const getScrollPaddingTop = () => {
-    const rootStyles = getComputedStyle(document.documentElement);
+    const rootStyles = globalThis.getComputedStyle(globalThis.document.documentElement);
     const value = rootStyles.getPropertyValue('scroll-padding-top');
     const parsed = parseFloat(value);
     return Number.isNaN(parsed) ? 0 : parsed;
@@ -138,7 +138,7 @@ const findActiveTopicId = (scrollPaddingTop) => {
 
     const viewportTop = scrollPaddingTop;
     const viewportBottom =
-        window.innerHeight || document.documentElement.clientHeight || 0;
+        globalThis.innerHeight || globalThis.document.documentElement.clientHeight || 0;
 
     let bestId = topics[0].id;
     let bestScore = Number.NEGATIVE_INFINITY;
@@ -190,13 +190,13 @@ const requestActiveUpdate = () => {
     if (isTicking) return;
     isTicking = true;
 
-    window.requestAnimationFrame(() => {
+    globalThis.requestAnimationFrame(() => {
         isTicking = false;
         updateActiveFromScroll();
     });
 };
 
-window.addEventListener(
+globalThis.addEventListener(
     'scroll',
     () => {
         requestActiveUpdate();
@@ -204,6 +204,6 @@ window.addEventListener(
     { passive: true },
 );
 
-window.addEventListener('resize', requestActiveUpdate);
+globalThis.addEventListener('resize', requestActiveUpdate);
 
 requestActiveUpdate();
