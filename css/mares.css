@@ -26,6 +26,28 @@ body {
     user-select: all;
 }
 
+a{
+    color: #a0d0ff;
+    text-decoration: none;
+    border-bottom: 1px solid #a0d0ff;
+    transition: all 0.5s ease;
+    &:hover {
+        color: #fff;
+        border-bottom-color: #fff;
+    }
+    &[href^="http"] {
+        &::after {
+            content: url('../img/arrow-up-right-from-square-sharp.svg');
+            width: 1em;
+            height: 1em;
+            display: inline-block;
+            vertical-align: middle;
+            padding-left: 0.25em;
+            filter: invert(1) grayscale(100%);
+        }
+    }
+}
+
 .layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(240px, 280px);
