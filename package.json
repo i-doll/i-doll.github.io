@@ -1,5 +1,6 @@
 {
 	"scripts": {
+		"build": "vite build",
 		"dev": "vite",
 		"lint": "oxlint",
 		"format": "oxfmt js/*.js"
