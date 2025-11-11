@@ -1,5 +1,5 @@
 
-export class Personalia {
+export default class Personalia {
     constructor(personalia, personaliaElement) {
         this.personalia = personalia;
         this.personaliaElement = personaliaElement;
