@@ -56,7 +56,6 @@
         transition: opacity 0.3s ease;
         filter: blur(10px);
         backdrop-filter: blur(10px);
-        transition: opacity 0.3s ease;
         pointer-events: none;
     }
 }
