@@ -13,7 +13,9 @@
     </style>
     <link preload rel="stylesheet" type="text/css" href="css/mares.css">
     <link preload rel="stylesheet" type="text/css" href="css/reset.css">
+    <link preload rel="stylesheet" type="text/css" href="css/modal.css">
     <script preload type="module" src="js/mares.js"></script>
+    <script preload type="module" src="js/modal-warning.js"></script>
 </head>
 
 <body>
@@ -255,10 +257,22 @@
                     <li>11-11-2025: Added being a mare section</li>
                     <li>11-11-2025: Added small explenation of the cards</li>
                     <li>11-11-2025: Updated chat section with more general use information</li>
+                    <li>18-11-2025: Added clear preface to not threat this as a bible</li>
                 </ul>
             </section>
         </main>
     </div>
+    <div id="modal-backdrop" class="modal-backdrop"></div>
+    <dialog id="caution" class="modal caution">
+        <h2>This is a guidance, not a bible</h2>
+        <p>
+            This is a document to help you understand how to handle mares, it is not a bible, and you should use your own judgement and common sense.
+        </p>
+        <p>
+            Don't quote this document as a way to justify your actions, the goal is to give you ideas, not a rulebook.
+        </p>
+        <button id="close-caution" type="button" class="button">I understand</button>
+    </dialog>
 </body>
 
 </html>
