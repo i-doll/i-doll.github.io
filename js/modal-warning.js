@@ -1,7 +1,14 @@
 
 const closeCaution = document.getElementById('close-caution');
-closeCaution.addEventListener('click', () => {
-    document.getElementById('caution').close();
-    document.getElementById('modal-backdrop').style.display = 'none';
-});
-document.getElementById('caution').showModal();
+const caution = document.getElementById('caution');
+const modalBackdrop = document.getElementById('modal-backdrop');
+
+if (!closeCaution || !caution || !modalBackdrop) {
+    console.error('Required modal elements not found');
+} else {
+    closeCaution.addEventListener('click', () => {
+        caution.close();
+        modalBackdrop.style.display = 'none';
+    });
+    caution.showModal();
+}

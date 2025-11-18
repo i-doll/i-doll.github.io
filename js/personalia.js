@@ -9,9 +9,17 @@ export default class Personalia {
     }
 
     async getAchievements() {
-        const response = await globalThis.fetch('https://tt-achievements.th3a.dev/achievements/i.doll');
-        const data = await response.json();
-        this.personalia.Achievements = data;
+        try {
+            const response = await globalThis.fetch('https://tt-achievements.th3a.dev/achievements/i.doll');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            this.personalia.Achievements = data;
+        } catch (error) {
+            console.error('Failed to fetch achievements:', error);
+            this.personalia.Achievements = [];
+        }
     }
 
     createField(key, value) {
